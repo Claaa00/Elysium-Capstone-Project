@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
+
+  <link rel="stylesheet" href="/src/css/main.css" />
+  <link rel="stylesheet" href="/src/css/sidenav.css" />
+  <link rel="stylesheet" href="/src/css/records.css" />
+  <link rel="stylesheet" href="/src/css/overlay.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="/src/resources/simple-checkbox-table/dist/jquery.simple-checkbox-table.min.js"></script>
+
+  <title>Elysium</title>
+</head>
+
+<body>
+  <div class="container records-container">
+    <aside class="navigation-container main-padding">
+      <div class="cemetery-profile-container">
+        <img src="/src/img/binanlogo.jpg" alt="Binan Municipal Logo" width="100px" height="100px"
+          style="border-radius: 50%" />
+        <p class="cemetery-name" id="aside-cemetery-name">
+          Binan City Cemetery
+        </p>
+      </div>
+
+      <nav class="navigations">
+        <ul class="navigation-links">
+          <a href="dashboard.html" class="link-item">
+            <li class="link">
+              <p class="link-name">Dashboard</p>
+              <i class="bx bxs-chart"></i>
+            </li>
+          </a>
+
+          <a href="records.html" class="link-item">
+            <li class="link active">
+              <p class="link-name">Records</p>
+              <i class="bx bxs-folder-open"></i>
+            </li>
+          </a>
+
+          <a href="map.html" class="link-item">
+            <li class="link">
+              <p class="link-name">Map</p>
+              <i class="bx bxs-map-alt"></i>
+            </li>
+          </a>
+
+          <a href="management.html" class="link-item">
+            <li class="link">
+              <p class="link-name">Management</p>
+              <i class="bx bxs-customize"></i>
+            </li>
+          </a>
+
+          <a href="settings.html" class="link-item">
+            <li class="link">
+              <p class="link-name">Settings</p>
+              <i class="bx bxs-cog"></i>
+            </li>
+          </a>
+        </ul>
+      </nav>
+
+      <div class="logout-button">
+        <a class="link-item" id="logout-button">
+          <li class="link">
+            <p class="link-name">Logout</p>
+            <i class="bx bx-log-out"></i>
+          </li>
+        </a>
+      </div>
+    </aside>
+
+    <div class="main-container">
+      <header class="header-container">
+        <h2 class="page-name">Records</h2>
+
+        <div class="right-header-content">
+          <form class="header-search">
+            <input type="search" class="search-bar" placeholder="Search for records.." id="header-search-box" />
+          </form>
+
+          <i class="bx bx-plus container-shadow" onclick="openCreateOverlay()"></i>
+        </div>
+      </header>
+
+      <div class="records-main-container container-shadow">
+        <div class="tab">
+          <button class="tab-links" onclick="openLink(event, 'all')" id="allTab">
+            All <span class="badge" id="allTabCount" value="0"></span>
+          </button>
+
+          <button class="tab-links" onclick="openLink(event, 'apartment')" id="apartment-tab">
+            Apartment
+            <span class="badge" id="apartmentTabCount"></span>
+          </button>
+
+          <button class="tab-links" onclick="openLink(event, 'lawn')" id="lawn-tab">
+            Lawn <span class="badge" id="lawnTabCount"></span>
+          </button>
+
+          <button class="tab-links" onclick="openLink(event, 'boneVault')" id="bone-vault-tab">
+            Bone Vault
+            <span class="badge" id="boneVaultTabCount"></span>
+          </button>
+
+          <button class="tab-links" onclick="openLink(event, 'archived')" id="archived-tab">
+            Archived <span class="badge" id="archivedTabCount">20,000</span>
+          </button>
+
+          <button class="tab-menu">
+            <i class="bx bx-menu"></i>
+
+            <div class="tab-menu-links container-shadow">
+              <a onclick="openLink(event, 'all')">All</a>
+              <a onclick="openLink(event, 'apartment')">Apartment</a>
+              <a onclick="openLink(event, 'lawn')">Lawn</a>
+              <a onclick="openLink(event, 'boneVault')">Bone Vault</a>
+              <a onclick="openLink(event, 'archived')">Archived</a>
+            </div>
+          </button>
+        </div>
+
+        <div class="tab-content" id="all">
+          <div class="button-group">
+            <input type="search" id="all-table-search-box" placeholder="Search..." style="display: none" />
+
+            <button class="search-button button" onclick="toggleAllSearchBox()">
+              <i class="bx bx-search all-search-icon"></i>
+              <i class="bx bx-x all-close-icon" style="display: none"></i>
+            </button>
+
+            <button class="download-button button">
+              <i class="bx bxs-download"></i>
+            </button>
+
+            <button class="refresh-button button">
+              <i class="bx bx-refresh"></i>
+            </button>
+
+            <button class="multi-archive-button all-btn button" onclick="openArchiveOverlay()" disabled>
+              <i class="bx bx-archive-in"></i>
+            </button>
+
+            <button class="create-button button" onclick="openCreateOverlay(), showCreateRecord()">
+              <p class="create-button-name">Create</p>
+              <i class="bx bx-plus"></i>
+            </button>
+          </div>
+
+          <!-- Populate each on click -->
+          <div class="table-container records-table-container">
+            <table id="allTable" class="records-table table-table all-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" /></th>
+                  <th class="string-header-sort id-sort">ID</th>
+                  <th class="string-header-sort name-sort">Name</th>
+                  <th class="bdate-header-sort">Birth Date</th>
+                  <th class="ddate-header-sort">Death Date</th>
+                  <th class="string-header-sort grave-type-sort">
+                    Grave Type
+                  </th>
+                  <th>Location</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="allRecordsTable">
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-content" id="apartment">
+          <div class="button-group">
+            <input type="search" id="apt-table-search-box" placeholder="Search..." style="display: none" />
+
+            <button class="search-button button" onclick="toggleAptSearchBox()">
+              <i class="bx bx-search apt-search-icon"></i>
+              <i class="bx bx-x apt-close-icon" style="display: none"></i>
+            </button>
+
+            <button class="download-button button">
+              <i class="bx bxs-download"></i>
+            </button>
+
+            <button class="refresh-button button">
+              <i class="bx bx-refresh"></i>
+            </button>
+
+            <button class="multi-archive-button apt-btn button" onclick="openArchiveOverlay()" disabled>
+              <i class="bx bx-archive-in"></i>
+            </button>
+
+            <button class="create-button button" onclick="openCreateOverlay()">
+              <p class="create-button-name">Create</p>
+              <i class="bx bx-plus"></i>
+            </button>
+          </div>
+
+          <div class="table-container records-table-container">
+            <table id="apartmentTable" class="records-table table-table apt-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" /></th>
+                  <th class="string-header-sort id-sort">ID</th>
+                  <th class="string-header-sort name-sort">Name</th>
+                  <th class="bdate-header-sort">Birth Date</th>
+                  <th class="ddate-header-sort">Death Date</th>
+                  <th class="string-header-sort grave-type-sort">
+                    Grave Type
+                  </th>
+                  <th>Location</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="aptRecordsTable">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-content" id="lawn">
+          <div class="button-group">
+            <input type="search" id="lwn-table-search-box" placeholder="Search..." style="display: none" />
+
+            <button class="search-button button" onclick="toggleLwnSearchBox()">
+              <i class="bx bx-search lwn-search-icon"></i>
+              <i class="bx bx-x lwn-close-icon" style="display: none"></i>
+            </button>
+
+            <button class="download-button button">
+              <i class="bx bxs-download"></i>
+            </button>
+
+            <button class="refresh-button button">
+              <i class="bx bx-refresh"></i>
+            </button>
+
+            <button class="multi-archive-button lwn-btn button" onclick="openArchiveOverlay()" disabled>
+              <i class="bx bx-archive-in"></i>
+            </button>
+
+            <button class="create-button button" onclick="openCreateOverlay()">
+              <p class="create-button-name">Create</p>
+              <i class="bx bx-plus"></i>
+            </button>
+          </div>
+
+          <div class="table-container records-table-container">
+            <table id="lawnTable" class="records-table table-table lwn-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" /></th>
+                  <th class="string-header-sort id-sort">ID</th>
+                  <th class="string-header-sort name-sort">Name</th>
+                  <th class="bdate-header-sort">Birth Date</th>
+                  <th class="ddate-header-sort">Death Date</th>
+                  <th class="string-header-sort grave-type-sort">
+                    Grave Type
+                  </th>
+                  <th>Location</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="lwnRecordsTable"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-content" id="boneVault">
+          <div class="button-group">
+            <input type="search" id="bv-table-search-box" placeholder="Search..." style="display: none" />
+
+            <button class="search-button button" onclick="toggleBvSearchBox()">
+              <i class="bx bx-search bv-search-icon"></i>
+              <i class="bx bx-x bv-close-icon" style="display: none"></i>
+            </button>
+
+            <button class="download-button button">
+              <i class="bx bxs-download"></i>
+            </button>
+
+            <button class="refresh-button button">
+              <i class="bx bx-refresh"></i>
+            </button>
+
+            <button class="multi-archive-button bv-btn button" onclick="openArchiveOverlay()" disabled>
+              <i class="bx bx-archive-in"></i>
+            </button>
+
+            <button class="create-button button" onclick="openCreateOverlay()">
+              <p class="create-button-name">Create</p>
+              <i class="bx bx-plus"></i>
+            </button>
+          </div>
+
+          <div class="table-container records-table-container">
+            <table id="boneVaultTable" class="records-table table-table bv-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" /></th>
+                  <th class="string-header-sort id-sort">ID</th>
+                  <th class="string-header-sort name-sort">Name</th>
+                  <th class="bdate-header-sort">Birth Date</th>
+                  <th class="ddate-header-sort">Death Date</th>
+                  <th class="string-header-sort grave-type-sort">
+                    Grave Type
+                  </th>
+                  <th>Location</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="bvRecordsTable"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-content" id="archived">
+          <div class="button-group">
+            <input type="search" id="arc-table-search-box" placeholder="Search..." style="display: none" />
+
+            <button class="search-button button" onclick="toggleArcSearchBox()">
+              <i class="bx bx-search arc-search-icon"></i>
+              <i class="bx bx-x arc-close-icon" style="display: none"></i>
+            </button>
+
+            <button class="filter-button button">
+              <i class='bx bx-filter-alt'></i>
+
+              <div class="filter-content">
+                <!-- <div class="filter-option">Apartment <span class="toggle-group"> <i class='bx bx-toggle-left'></i> <i class='bx bxs-toggle-right' ></i></span></div>
+                <div class="filter-option">Lawn <span class="toggle-group"> <i class='bx bx-toggle-left'></i> <i class='bx bxs-toggle-right' ></i></span></div>
+                <div class="filter-option">Bone Vault <span class="toggle-group"> <i class='bx bx-toggle-left'></i> <i class='bx bxs-toggle-right' ></i></span> </div> -->
+
+                <div class="filter-option">Apartment 
+                  <span class="toggle-group"> 
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </span>
+                </div>
+
+                <div class="filter-option">Lawn 
+                  <span class="toggle-group"> 
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </span>
+                </div>
+                
+                <div class="filter-option">Bone Vault 
+                  <span class="toggle-group"> 
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </span>
+                </div>
+              </div>
+            </button>
+
+            <button class="download-button button">
+              <i class="bx bxs-download"></i>
+            </button>
+
+            <button class="refresh-button button">
+              <i class="bx bx-refresh"></i>
+            </button>
+
+            <button class="multi-archive-button arc-btn button" onclick="openUnarchiveOverlay()" disabled>
+              <i class="bx bx-archive-out"></i>
+            </button>
+
+
+            <!-- <button
+                class="create-button button"
+                onclick="openCreateOverlay()"
+              >
+                <p class="create-button-name">Create</p>
+                <i class="bx bx-plus"></i>
+              </button> -->
+          </div>
+
+          <div class="table-container records-table-container">
+            <table id="archivedTable" class="records-table arc-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" class="checkbox" /></th>
+                  <th class="arc-string-header-sort arc-id-sort">ID</th>
+                  <th class="arc-string-header-sort arc-name-sort">Name</th>
+                  <th class="arc-bdate-header-sort">Birth Date</th>
+                  <th class="arc-ddate-header-sort">Death Date</th>
+                  <th class="arc-string-header-sort arc-grave-type-sort">
+                    Previous Grave Type
+                  </th>
+                  <th>Previous Location</th>
+                  <th class="adate-header-sort">Date Archived</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="arc-records-table">
+                <tr>
+                  <td><input type="checkbox" class="checkbox" /></td>
+                  <td class="arc-string-body-sort">1234567890</td>
+                  <td class="arc-string-body-sort">Juan Tamad</td>
+                  <td class="arc-bdate-body-sort">11/01/1995</td>
+                  <td class="arc-ddate-body-sort">11/02/2020</td>
+                  <td class="arc-string-body-sort">
+                    <div class="chip orange-chip">Apartment</div>
+                  </td>
+                  <td>Block A, B2</td>
+                  <td class="adate-body-sort">09/05/2018</td>
+                  <td class="action-buttons">
+                    <button class="archive-button button" onclick="openUnarchiveOverlay()">
+                      <i class="bx bx-archive-out"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><input type="checkbox" class="checkbox" /></td>
+                  <td class="arc-string-body-sort">1234567890</td>
+                  <td class="arc-string-body-sort">Juan Tamad</td>
+                  <td class="arc-bdate-body-sort">11/01/1997</td>
+                  <td class="arc-ddate-body-sort">11/02/2023</td>
+                  <td class="arc-string-body-sort">
+                    <div class="chip orange-chip">Apartment</div>
+                  </td>
+                  <td>Block A, B2</td>
+                  <td class="adate-body-sort">09/05/2017</td>
+                  <td class="action-buttons">
+                    <button class="archive-button button" onclick="openUnarchiveOverlay()">
+                      <i class="bx bx-archive-out"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay-wrapper" id="record-overlay" style="display: none">
+    <div class="overlay container-shadow">
+      <h2 id="createLabel" class="overlay-name" style="display:block">Create new record</h2>
+      <h2 id="updateLabel" class="overlay-name" style="display:none">Update record</h2>
+      <form id="createForm" class="createRecord">
+        <div class="overlay-details">
+          <div class="error-message" style="display: none">
+            Please fill in valid value for all required fields
+          </div>
+
+          <input type="text" name="collectionId" id="collectionId" value="" style="display:none"></input>
+
+          <fieldset class="input-group-container">
+            <legend class="input-group-name">Interment Profile</legend>
+
+            <div class="input-group">
+              <div class="input-pair">
+                <label for="first-name">First Name <span class="required">[Required]</span></label>
+
+                <input type="text" name="firstname" id="first-name" placeholder="Enter first name" required />
+              </div>
+
+              <div class="input-pair">
+                <label for="last-name">Last Name <span class="required">[Required]</span></label>
+
+                <input type="text" name="lastname" id="last-name" placeholder="Enter last name" required />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-pair">
+                <label for="birth-date">Birth Date</label>
+
+                <input type="date" name="birthdate" id="birth-date" />
+              </div>
+
+              <div class="input-pair">
+                <label for="death-date">Death Date</label>
+
+                <input type="date" name="deathdate" id="death-date" placeholder="Enter death date" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="input-group-container">
+            <legend class="input-group-name">Interment Location</legend>
+
+            <div class="input-group">
+              <div class="input-pair">
+                <label for="grave-type-input">Grave Type <span class="required">[Required]</span></label>
+
+                <select name="gravetype" id="grave-type-input" required>
+                  <!-- change all options ex. apartment-type-form to apartment -->
+                  <option value="">Choose...</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="lawn">Lawn</option>
+                  <option value="bonevault">Bone Vault</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Remove hidden Required functions. This causes an error when querying -->
+            <div class="input-group grave-type-option" id="graveLocation">
+              <div class="input-pair">
+                <label for="block-input">Bone Block <span class="required">[Required]</span></label>
+
+                <select name="block" id="block-input" disabled required>
+                  <option value="">Choose...</option>
+                  <option value="a">A</option>
+                  <option value="b">B</option>
+                  <option value="c">C</option>
+                </select>
+              </div>
+
+              <div class="input-pair">
+                <label for="column-input">Column <span class="required">[Required]</span></label>
+
+                <select name="column" id="column-input" disabled required>
+                  <option value="">Choose...</option>
+                  <option value="a">A</option>
+                  <option value="b">B</option>
+                  <option value="c">C</option>
+                </select>
+              </div>
+
+              <div class="input-pair">
+                <label for="row-input">Row <span class="required">[Required]</span></label>
+
+                <select name="row" id="row-input" disabled required>
+                  <option value="">Choose...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="overlay-controls">
+          <button class="cancel-button button" onclick="closeCreateOverlay(), formReset()" type="button">
+            Cancel
+          </button>
+          <button class="submit-button button" onclick="validateForm()" id="createRecord" type="submit"
+            style="display:block">
+            Save Record
+          </button>
+          <button id="updateRecord" class="submit-button button" onclick="switchButton('editBtn')" type="button"
+            style="display:none"> Save Changes </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="overlay-wrapper" id="archive-record-overlay" style="display: none">
+    <div class="overlay container-shadow">
+      <h2 class="overlay-name">Archive record?</h2>
+
+      <div class="overlay-details">
+        <p class="archive-message">
+          Are you sure you want to <span class="highlight">archive</span> this
+          record?
+        </p>
+      </div>
+
+      <div class="overlay-controls">
+        <button class="cancel-button button" onclick="closeArchiveOverlay()">
+          No
+        </button>
+        <button class="submit-button button" id="confirm-archive-record" onclick="openArchiveConfirmPasswordOverlay()">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay-wrapper" id="unarchive-record-overlay" style="display: none">
+    <div class="overlay container-shadow">
+      <h2 class="overlay-name">Archive record?</h2>
+
+      <div class="overlay-details">
+        <p class="unarchive-message">
+          Are you sure you want to
+          <span class="highlight green">unarchive</span> this record?
+        </p>
+      </div>
+
+      <div class="overlay-controls">
+        <button class="cancel-button button" onclick="closeUnarchiveOverlay()">
+          No
+        </button>
+        <button class="submit-button button" id="confirm-unarchive-record"
+          onclick="openUnarchiveConfirmPasswordOverlay()">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Use javascript to auto populate table -->
+  <div class="overlay-wrapper" id="view-details-record-overlay" style="display: none">
+    <div class="overlay container-shadow">
+      <h2 class="overlay-name">Detailed View</h2>
+
+      <div class="overlay-details">
+        <table class="detailed-view">
+          <tr>
+            <th>ID</th>
+            <td>1234567890</td>
+          </tr>
+
+          <tr>
+            <th>Name</th>
+            <td>Juan Tamad</td>
+          </tr>
+
+          <tr>
+            <th>Date of Birth</th>
+            <td>11/01/1995</td>
+          </tr>
+
+          <tr>
+            <th>Date of Death</th>
+            <td>11/02/2020</td>
+          </tr>
+
+          <tr>
+            <th>Grave Type</th>
+            <td>Apartment</td>
+          </tr>
+
+          <tr>
+            <th>Location</th>
+            <td>Block A, B2</td>
+          </tr>
+
+          <tr>
+            <th>Date Modified</th>
+            <td>11/19/2020</td>
+          </tr>
+
+          <tr>
+            <th>Status</th>
+            <td>Active</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="overlay-controls">
+        <button class="cancel-button button" onclick="closeDetailedViewOverlay()">
+          Cancel
+        </button>
+        <button class="submit-button button">View in Map</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay-wrapper" id="confirm-password-overlay" style="display: none">
+    <div class="overlay container-shadow">
+      <h2 class="overlay-name">Confirm Password</h2>
+
+      <div class="overlay-details">
+        <p class="overlay-text">
+          For you security, please confirm your passwod to continue.
+        </p>
+
+        <form class="confirm-password-form">
+
+          <fieldset class="input-group-container">
+
+            <div class="input-group">
+              <div class="input-pair">
+                <label for="confirm-pass">Password <span class="required">[Required]</span></label>
+
+                <input type="password" name="confirm-pass" id="confirm-pass" placeholder="Enter password" required />
+
+              </div>
+
+          </fieldset>
+        </form>
+
+      </div>
+
+      <div class="overlay-controls">
+        <button class="cancel-button button" onclick="closeConfirmPasswordOverlay()">
+          Cancel
+        </button>
+        <button class="submit-button button">Confirm Password</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/src/records.bundle.js"></script>
+  <script src="/src/js/date.js"></script>
+  <script src="/src/js/count.js"></script>
+  <script src="/src/js/tablesorting.js"></script>
+  <script src="/src/js/tablecheck.js"></script>
+  <script src="/src/js/toggletab.js"></script>
+  <script src="/src/js/overlay.js"></script>
+  <script src="/src/js/search.js"></script>
+  <script src="/src/js/togglebuttons.js"></script>
+  <script src="/src/js/toggleform.js"></script>
+</body>
+
+</html>

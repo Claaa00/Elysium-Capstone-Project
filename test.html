@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <p>Test</p>
+    <form class="createRecord">
+        <input type="text" name="firstname" id="first-name" placeholder="Enter first name" required />
+        <input type="text" name="firstname" id="first-name2" placeholder="Enter first name2" required />
+        <input type="text" name="firstname" id="first-name3" placeholder="Enter first name3" required />
+        <button type="submit">click</button>
+    </form>
+    <script>
+
+        $(".createRecord").on('submit', (e) =>{
+            e.stopImmediatePropagation();
+            e.preventDefault();
+            var a = "a";
+            var b = "a";
+            var c = "a";
+            if(verifier(a, b, c) == false){
+                console.log("success");
+                e.preventDefault();
+            }else{
+                console.log("false");
+            }
+        })
+        function verifier(block, row, column){
+            if($("#first-name").val() === block && $("#first-name2").val() === row && $("#first-name3").val() === column)
+            {
+                console.log(block,row,column)
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    </script>
+
+</body>
+</html>

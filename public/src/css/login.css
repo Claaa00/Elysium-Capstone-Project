@@ -1,0 +1,156 @@
+.login-form-container,
+.forgot-password-form-container {
+  width: 400px;
+  height: 100vh;
+  /* background-color: var(--color-primary); */
+  background: url(/src/img/backgroundimage3.png) no-repeat;
+  background-size: cover;
+  color: var(--color-text);
+}
+
+.cover-image-container {
+  width: calc(100% - 400px);
+  height: 100vh;
+  background: url(/src/img/locatormap.png) no-repeat;
+  background-size: cover;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  min-width: 100%;
+  justify-content: center;
+  letter-spacing: 2px;
+}
+
+.logo-container .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container .logo strong {
+  margin-left: 1px;
+}
+
+.logo-container .cemetery-name {
+  border-left: 2px solid var(--color-text);
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+.form-label {
+  margin-top: 4rem;
+  color: var(--color-secondary);
+}
+
+form {
+  margin-top: 2rem;
+}
+
+form .input-group {
+  margin-bottom: 1rem;
+}
+
+form .input-group .input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 3px;
+  border: 1px solid #fff;
+}
+
+form .input-group .input:focus {
+  border: 1px solid var(--color-primary);
+  box-shadow: 1px 1px 3px 2px var(--color-secondary-drk);
+}
+
+.email-error,
+.password-error,
+.login-validation-error-message,
+.new-password-error,
+.retype-password-error {
+  display: none;
+}
+
+form .input-group .error-message {
+  color: var(--color-error);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+form .input-group .new-password-error {
+  line-height: 16px;
+}
+
+form .input-group .new-password-error .title {
+  margin-bottom: 5px;
+}
+
+form .input-group .new-password-error .invalid {
+  padding-left: 15px;
+  font-weight: 700;
+}
+
+.link {
+  width: 100%;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.forgot-password-link {
+  text-align: right;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.go-to-website-link,
+.login-link {
+  text-align: center;
+}
+
+.login-link {
+  margin-bottom: 2rem;
+}
+
+.login-validation-error-message {
+  padding: 1rem;
+  background-color: var(--color-error);
+  border-radius: 3px;
+  font-weight: 600;
+  line-height: 16px;
+  margin-bottom: 1rem;
+}
+
+.button {
+  padding: 1.5rem;
+  width: 100%;
+  border-radius: 3px;
+  color: var(--color-primary);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.disabled {
+  background-color: var(--color-secondary-dsbld);
+}
+
+.enabled {
+  background-color: var(--color-secondary);
+  cursor: pointer;
+}
+
+.enabled:hover {
+  background-color: var(--color-secondary-drk);
+}
+
+.enabled:active {
+  transform: scale(0.98);
+}
+
+.submit-new-password-btn {
+  margin-top: 2rem;
+}

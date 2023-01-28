@@ -1,0 +1,73 @@
+.navigation-container {
+  width: 200px;
+  height: 100%;
+  background: url(/src/img/backgroundimage3.png) no-repeat;
+  /* background-color: var(--color-primary); */
+  background-size: cover;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+  left: 0;
+  top: 0;
+  justify-content: space-between;
+}
+
+.cemetery-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.cemetery-profile-container .cemetery-name {
+  font-weight: 600;
+}
+
+.navigations,
+.logout-button {
+  width: 100%;
+}
+
+.navigations .link {
+  margin-top: 6px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0px;
+}
+
+.link .link-name {
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.25s;
+}
+
+.link .bx {
+  font-size: 24px;
+  color: var(--color-secondary);
+  opacity: 0;
+  transition: all 0.25s;
+}
+
+.link-item:hover .link .link-name {
+  letter-spacing: 3px;
+}
+
+.link-item:hover .link .bx {
+  opacity: 1;
+}
+
+.active .link-name {
+  letter-spacing: 3px;
+}
+
+.active .bx {
+  opacity: 1;
+}

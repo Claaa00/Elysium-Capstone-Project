@@ -1,0 +1,112 @@
+.management-main-container {
+  background-color: #fff;
+  width: calc(100% - 4rem);
+  height: calc(100% - 88px);
+  margin: 2rem;
+  margin-top: 0;
+  border-radius: 6px;
+}
+
+.tab-content {
+  width: 100%;
+  height: calc(100% - 53px);
+}
+
+.tab-content .button-group {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  flex-wrap: wrap;
+  /* gap: 1rem; */
+}
+
+.tab-content .button-group .button {
+  padding: 1rem;
+  align-items: center;
+  display: flex;
+  background-color: transparent;
+}
+
+.tab-content .button-group .button:not(.create-button):hover {
+  background-color: #eee;
+}
+
+.tab-content .button-group .button:not(.create-button):active {
+  background-color: #ddd;
+}
+
+.tab-content .button-group .create-button {
+  background-color: var(--color-secondary);
+  font-weight: 500;
+}
+
+.tab-content .button-group .create-button:hover {
+  background-color: var(--color-secondary-drk);
+}
+
+.tab-content .button-group .create-button:active {
+  transform: scale(0.98);
+}
+
+.tab-content .button-group .bx {
+  font-size: 18px;
+}
+
+.tab-content .button-group .bx-plus {
+  margin-left: 40px;
+}
+
+.tab-content .button-group .search-button {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.tab-content .button-group input[type="search"] {
+  padding: 6px 1rem;
+  border-radius: 3px;
+  width: 200px;
+  height: fit-content;
+  outline: none;
+  border: 1px solid #aaa;
+  transition: all 0.25s;
+}
+
+.tab-content .button-group input[type="search"]:focus {
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 255, 0.5);
+  border: 1px solid transparent;
+}
+
+.management-table-container {
+  max-height: calc(100% - 66px);
+  /* max-height: calc(100% - 86px); */
+}
+
+td,
+th {
+  text-align: center;
+}
+
+#graveType tr td:nth-of-type(3),
+#location tr td:nth-of-type(5),
+#block tr td:nth-of-type(6) {
+  display: flex;
+  justify-content: center;
+}
+
+#graveType tr td button,
+#location tr td button,
+#block tr td button {
+  font-size: 18px;
+  background-color: transparent;
+}
+
+tr td button .bx {
+  padding: 5px;
+  /* border-radius: 50px; */
+}
+
+tr td button .bx:hover {
+  background-color: #ddd;
+}

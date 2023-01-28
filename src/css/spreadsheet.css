@@ -1,0 +1,13 @@
+.spreadsheet-main-container {
+    background-color: #fff;
+    width: calc(100% - 4rem);
+    height: calc(100% - 88px);
+    margin: 2rem;
+    margin-top: 0;
+    border-radius: 6px;
+  }
+  
+  .tab-content {
+    width: 100%;
+    height: calc(100% - 53px);
+  }

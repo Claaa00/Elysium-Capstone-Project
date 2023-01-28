@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link
+      rel="stylesheet"
+      href="http://meyerweb.com/eric/tools/css/reset/reset.css"
+    />
+
+    <link rel="stylesheet" href="/src/css/main.css" />
+    <link rel="stylesheet" href="/src/css/sidenav.css" />
+    <link rel="stylesheet" href="/src/css/settings.css" />
+    <link rel="stylesheet" href="/src/css/overlay.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/src/resources/simple-checkbox-table/dist/jquery.simple-checkbox-table.min.js"></script>
+
+    <title>Elysium</title>
+  </head>
+
+  <body>
+    <div class="container settings-container">
+      <aside class="navigation-container main-padding">
+        <div class="cemetery-profile-container">
+          <img
+            src="/src/img/binanlogo.jpg"
+            alt="Binan Municipal Logo"
+            width="100px"
+            height="100px"
+            style="border-radius: 50%"
+          />
+          <p class="cemetery-name" id="aside-cemetery-name">
+            Binan City Cemetery
+          </p>
+        </div>
+
+        <nav class="navigations">
+          <ul class="navigation-links">
+            <a href="dashboard.html" class="link-item">
+              <li class="link">
+                <p class="link-name">Dashboard</p>
+                <i class="bx bxs-chart"></i>
+              </li>
+            </a>
+
+            <a href="records.html" class="link-item">
+              <li class="link">
+                <p class="link-name">Records</p>
+                <i class="bx bxs-folder-open"></i>
+              </li>
+            </a>
+
+            <a href="spreadsheet.html" class="link-item">
+              <li class="link ">
+                <p class="link-name">Blocks</p>
+                <i class="bx bxs-customize"></i>
+              </li>
+            </a>
+
+            <a href="map.html" class="link-item">
+              <li class="link">
+                <p class="link-name">Map</p>
+                <i class="bx bxs-map-alt"></i>
+              </li>
+            </a>
+
+            <a href="management.html" class="link-item">
+              <li class="link">
+                <p class="link-name">Management</p>
+                <i class='bx bxs-check-square'></i>
+              </li>
+            </a>
+
+            <a href="settings.html" class="link-item">
+              <li class="link active">
+                <p class="link-name">Settings</p>
+                <i class="bx bxs-cog"></i>
+              </li>
+            </a>
+          </ul>
+        </nav>
+
+        <div class="logout-button">
+          <a href="./" class="link-item" id="logout-button">
+            <li class="link">
+              <p class="link-name">Logout</p>
+              <i class="bx bx-log-out"></i>
+            </li>
+          </a>
+        </div>
+      </aside>
+
+      <div class="main-container">
+        <header class="header-container">
+          <h2 class="page-name">Settings</h2>
+
+          <div class="right-header-content">
+            <form class="header-search">
+              <input
+                type="search"
+                class="search-bar"
+                placeholder="Search for records.."
+                id="header-search-box"
+              />
+            </form>
+
+            <i
+              class="bx bx-plus container-shadow"
+              onclick="openCreateOverlay()"
+            ></i>
+          </div>
+        </header>
+
+        <div
+          class="settings-main-container container-shadow"
+          id="main"
+          style="display: block"
+        >
+          <div class="tab">
+            <button class="tab-links" onclick="openLink(event, 'general')">
+              General
+            </button>
+
+            <button class="tab-links" onclick="openLink(event, 'account')">
+              Account
+            </button>
+
+            <button class="tab-links" onclick="openLink(event, 'aboutUs')">
+              About Us
+            </button>
+
+            <button class="tab-menu">
+              <i class="bx bx-menu"></i>
+
+              <div class="tab-menu-links container-shadow">
+                <a onclick="openLink(event, 'general')">General</a>
+                <a onclick="openLink(event, 'account')">Account</a>
+                <a onclick="openLink(event, 'aboutUs')">About Us</a>
+              </div>
+            </button>
+          </div>
+
+          <div class="tab-content" id="general">
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                General Settings
+                <i class="bx bxs-edit-alt" onclick="openGeneralSettings()"></i>
+              </h2>
+
+              <div class="setting-group">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Cemetery Name</p>
+                    <h2 class="setting-set" id="settings-cemetery-name">
+                      Binan City Cemetery
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Profile Settings
+                <i class="bx bxs-edit-alt" onclick="openProfileSettings()"></i>
+              </h2>
+
+              <div class="setting-group">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Profile Name</p>
+                    <h2 class="setting-set" id="settings-profile-name">
+                      Binan City Cemetery
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="account">
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Security Settings
+                <i class="bx bxs-edit-alt" onclick="openSecuritySettings()"></i>
+              </h2>
+
+              <div class="setting-group">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Email</p>
+                    <h2 class="setting-set" id="settings-email">Admin</h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Password</p>
+                    <h2 class="setting-set" id="settings-password">
+                      *************
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-group-container setting-activities">
+              <h2 class="setting-group-label">Activities</h2>
+
+              <div class="setting-group" onclick="openRecentActivities()">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label recent-info-button">
+                      View Recent Activities
+                    </p>
+                  </div>
+
+                  <i class="bx bx-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="aboutUs">
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">Elysium</h2>
+
+              <div class="setting-group">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Mission</p>
+                    <h2 class="setting-set">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Iure repellat sequi optio, distinctio eos dolorem cumque
+                      beatae error qui voluptates, itaque impedit commodi
+                      repudiandae quis, fugiat doloribus tempore a esse!
+                    </h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Vision</p>
+                    <h2 class="setting-set">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Cumque consequatur corporis ipsa ex eaque perferendis
+                      saepe necessitatibus illo! Obcaecati est commodi fuga vel
+                      et impedit recusandae vero quidem reiciendis magnam!
+                    </h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Info Title</p>
+                    <h2 class="setting-set">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Molestias saepe laudantium itaque tempora officia. Ab
+                      impedit non debitis eveniet id rerum iste architecto
+                      officia et, modi cupiditate quas porro accusamus. Lorem
+                      ipsum dolor sit amet consectetur adipisicing elit. Minus
+                      repellat repudiandae facilis nesciunt magnam, iusto modi
+                      molestias et expedita, eius corrupti repellendus eaque a
+                      porro est natus tenetur praesentium earum.
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="settings-main-container container-shadow"
+          id="recents"
+          style="display: none"
+        >
+          <div class="return-button">
+            <span
+              class="return-button-wrapper"
+              onclick="closeRecentActivities()"
+              ><i class="bx bx-chevron-left"></i> Back</span
+            >
+          </div>
+
+          <div class="settings-records-container">
+            <div class="button-group">
+              <input
+                type="search"
+                id="rec-table-search-box"
+                placeholder="Search..."
+                style="display: none"
+              />
+
+              <button
+                class="search-button button"
+                onclick="toggleRecSearchBox()"
+              >
+                <i class="bx bx-search rec-search-icon"></i>
+                <i class="bx bx-x rec-close-icon" style="display: none"></i>
+              </button>
+
+              <button class="download-button button">
+                <i class="bx bxs-download"></i>
+              </button>
+
+              <button class="refresh-button button">
+                <i class="bx bx-refresh"></i>
+              </button>
+            </div>
+
+            <div class="table-container settings-table-container">
+              <table class="records-table arc-table">
+                <thead>
+                  <tr>
+                    <th class="string-header-sort id-sort">ID</th>
+                    <th class="string-header-sort name-sort">Name</th>
+                    <th class="bdate-header-sort">Birth Date</th>
+                    <th class="ddate-header-sort">Death Date</th>
+                    <th class="string-header-sort grave-type-sort">
+                      Grave Type
+                    </th>
+                    <th>Location</th>
+                    <th class="mdate-header-sort">Date Modified</th>
+                  </tr>
+                </thead>
+                <tbody id="rec-records-table">
+                  <tr>
+                    <td class="string-body-sort">1234567890</td>
+                    <td class="string-body-sort">Juan Tamad</td>
+                    <td class="bdate-body-sort">11/01/1995</td>
+                    <td class="ddate-body-sort">11/02/2020</td>
+                    <td class="string-body-sort">
+                      <div class="chip orange-chip">Apartment</div>
+                    </td>
+                    <td>Block A, B2</td>
+                    <td class="mdate-body-sort">11/19/2010</td>
+                  </tr>
+
+                  <tr>
+                    <td class="string-body-sort">2234567890</td>
+                    <td class="string-body-sort">Mary Paingas</td>
+                    <td class="bdate-body-sort">11/01/1998</td>
+                    <td class="ddate-body-sort">11/02/2017</td>
+                    <td class="string-body-sort">
+                      <div class="chip green-chip">Lawn</div>
+                    </td>
+                    <td>Block A, B2</td>
+                    <td class="mdate-body-sort">11/19/2011</td>
+                  </tr>
+
+                  <tr>
+                    <td class="string-body-sort">1234567891</td>
+                    <td class="string-body-sort">Elton John Navarro</td>
+                    <td class="bdate-body-sort">11/25/1995</td>
+                    <td class="ddate-body-sort">11/12/2020</td>
+                    <td class="string-body-sort">
+                      <div class="chip red-chip">Bone Vault</div>
+                    </td>
+                    <td>Block A, B2</td>
+                    <td class="mdate-body-sort">11/19/2012</td>
+                  </tr>
+
+                  <tr>
+                    <td class="string-body-sort">1234567890</td>
+                    <td class="string-body-sort">Judea Nicole Guillen</td>
+                    <td class="bdate-body-sort">06/06/1995</td>
+                    <td class="ddate-body-sort">05/02/2020</td>
+                    <td class="string-body-sort">
+                      <div class="chip orange-chip">Apartment</div>
+                    </td>
+                    <td>Block A, B2</td>
+                    <td class="mdate-body-sort">11/19/2013</td>
+                  </tr>
+
+                  <tr>
+                    <td class="string-body-sort">1234567890</td>
+                    <td class="string-body-sort">John Russel Derpo</td>
+                    <td class="bdate-body-sort">03/01/1995</td>
+                    <td class="ddate-body-sort">07/02/2020</td>
+                    <td class="string-body-sort">
+                      <div class="chip orange-chip">Apartment</div>
+                    </td>
+                    <td>Block A, B2</td>
+                    <td class="mdate-body-sort">11/19/2014</td>
+                  </tr>
+
+                  <tr>
+                    <td class="string-body-sort">1234567890</td>
+                    <td class="string-body-sort">Erika Tecson</td>
+                    <td class="bdate-body-sort">11/01/1990</td>
+                    <td class="ddate-body-sort">11/02/2012</td>
+                    <td class="string-body-sort">
+                      <div class="chip green-chip">Lawn</div>
+                    </td>
+                    <td>Block A, B2</td>
+                    <td class="mdate-body-sort">11/19/2015</td>
+                  </tr>
+
+                  <tr>
+                    <td class="string-body-sort">1234567890</td>
+                    <td class="string-body-sort">Rajap Benavidez</td>
+                    <td class="bdate-body-sort">11/01/1990</td>
+                    <td class="ddate-body-sort">11/02/2000</td>
+                    <td class="string-body-sort">
+                      <div class="chip orange-chip">Apartment</div>
+                    </td>
+                    <td>Block A, B2</td>
+                    <td class="mdate-body-sort">11/19/2016</td>
+                  </tr>
+
+                  <tr>
+                    <td class="string-body-sort">1234567890</td>
+                    <td class="string-body-sort">Clarence Paingas</td>
+                    <td class="bdate-body-sort">11/03/1995</td>
+                    <td class="ddate-body-sort">11/04/2020</td>
+                    <td class="string-body-sort">
+                      <div class="chip red-chip">Bone Vault</div>
+                    </td>
+                    <td>Block A, B2</td>
+                    <td class="mdate-body-sort">11/19/2017</td>
+                  </tr>
+
+                  <tr>
+                    <td class="string-body-sort">1234567890</td>
+                    <td class="string-body-sort">Dolores Paingas</td>
+                    <td class="bdate-body-sort">09/01/1995</td>
+                    <td class="ddate-body-sort">08/02/2020</td>
+                    <td class="string-body-sort">
+                      <div class="chip red-chip">Bone Vault</div>
+                    </td>
+                    <td>Block A, B2</td>
+                    <td class="mdate-body-sort">11/19/2018</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="overlay-wrapper"
+      id="create-record-overlay"
+      style="display: none"
+    >
+      <div class="overlay container-shadow">
+        <h2 class="overlay-name">Create new record</h2>
+
+        <div class="overlay-details">
+          <form class="overlay-form create-record-form">
+            <div class="error-message" style="display: none">
+              Please fill in valid value for all required fields
+            </div>
+
+            <fieldset class="input-group-container">
+              <legend class="input-group-name">Interment Profile</legend>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="first-name"
+                    >First Name <span class="required">[Required]</span></label
+                  >
+
+                  <input
+                    type="text"
+                    name="first-name"
+                    id="first-name"
+                    placeholder="Enter first name"
+                    required
+                  />
+                </div>
+
+                <div class="input-pair">
+                  <label for="last-name"
+                    >Last Name <span class="required">[Required]</span></label
+                  >
+
+                  <input
+                    type="text"
+                    name="last-name"
+                    id="last-name"
+                    placeholder="Enter last name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="birth-date">Birth Date</label>
+
+                  <input type="date" name="birth-date" id="birth-date" />
+                </div>
+
+                <div class="input-pair">
+                  <label for="death-date">Death Date</label>
+
+                  <input type="date" name="death-date" id="death-date" />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="input-group-container">
+              <legend class="input-group-name">Interment Location</legend>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="grave-type-input"
+                    >Grave Type <span class="required">[Required]</span></label
+                  >
+
+                  <select
+                    name="grave-type-input"
+                    id="grave-type-input"
+                    required
+                  >
+                    <option value="">Choose...</option>
+                    <option value="apartment-type-form">Apartment</option>
+                    <option value="lawn-type-form">Lawn</option>
+                    <option value="bone-vault-type-form">Bone Vault</option>
+                  </select>
+                </div>
+              </div>
+
+              <div
+                class="input-group grave-type-option"
+                id="bone-vault-type-form"
+                name="bone-vault-type-form"
+                style="display: none"
+              >
+                <div class="input-pair">
+                  <label for="block-input"
+                    >Bone Block <span class="required">[Required]</span></label
+                  >
+
+                  <select name="block-input" id="bv-block-input" required>
+                    <option value="">Choose...</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                  </select>
+                </div>
+
+                <div class="input-pair">
+                  <label for="column-input"
+                    >Column <span class="required">[Required]</span></label
+                  >
+
+                  <select name="column-input" id="bv-column-input" required>
+                    <option value="">Choose...</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                  </select>
+                </div>
+
+                <div class="input-pair">
+                  <label for="row-input"
+                    >Row <span class="required">[Required]</span></label
+                  >
+
+                  <select name="row-input" id="bv-row-input" required>
+                    <option value="">Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+              </div>
+
+              <div
+                class="input-group grave-type-option"
+                id="apartment-type-form"
+                name="apartment-type-form"
+                style="display: none"
+              >
+                <div class="input-pair">
+                  <label for="block-input"
+                    >Apt Block <span class="required">[Required]</span></label
+                  >
+
+                  <select name="block-input" id="apt-block-input" required>
+                    <option value="">Choose...</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                  </select>
+                </div>
+
+                <div class="input-pair">
+                  <label for="column-input"
+                    >Column <span class="required">[Required]</span></label
+                  >
+
+                  <select name="column-input" id="apt-column-input" required>
+                    <option value="">Choose...</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                  </select>
+                </div>
+
+                <div class="input-pair">
+                  <label for="row-input"
+                    >Row <span class="required">[Required]</span></label
+                  >
+
+                  <select name="row-input" id="apt-row-input" required>
+                    <option value="">Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+              </div>
+
+              <div
+                class="input-group grave-type-option"
+                id="lawn-type-form"
+                name="lawn-type-form"
+                style="display: none"
+              >
+                <div class="input-pair">
+                  <label for="block-input"
+                    >Lawn Block <span class="required">[Required]</span></label
+                  >
+
+                  <select name="block-input" id="lwn-block-input" required>
+                    <option value="">Choose...</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                  </select>
+                </div>
+
+                <div class="input-pair">
+                  <label for="column-input"
+                    >Column <span class="required">[Required]</span></label
+                  >
+
+                  <select name="column-input" id="lwn-column-input" required>
+                    <option value="">Choose...</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                  </select>
+                </div>
+
+                <div class="input-pair">
+                  <label for="row-input"
+                    >Row <span class="required">[Required]</span></label
+                  >
+
+                  <select name="row-input" id="lwn-row-input" required>
+                    <option value="">Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="overlay-controls">
+          <button class="cancel-button button" onclick="closeCreateOverlay()">
+            Cancel
+          </button>
+          <button
+            class="submit-button button"
+            onclick="validateForm()"
+            id="createNewRecord"
+          >
+            Save Record
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="overlay-wrapper"
+      id="general-settings-overlay"
+      style="display: none"
+    >
+      <div class="overlay container-shadow">
+        <h2 class="overlay-name">General</h2>
+
+        <div class="overlay-details">
+          <form class="overlay-form">
+            <fieldset class="input-group-container">
+              <legend class="input-group-name">General Settings</legend>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="cemetery-name-setting">Cemetery Name</label>
+
+                  <input
+                    type="text"
+                    name="cemetery-name-setting"
+                    id="cemetery-name-setting"
+                    placeholder="Enter cemetery name"
+                  />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="overlay-controls">
+          <button class="cancel-button button" onclick="closeGeneralSettings()">
+            Cancel
+          </button>
+          <button class="submit-button button" id="cemetery-name-submit">
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="overlay-wrapper"
+      id="profile-settings-overlay"
+      style="display: none"
+    >
+      <div class="overlay container-shadow">
+        <h2 class="overlay-name">General</h2>
+
+        <div class="overlay-details">
+          <form class="overlay-form">
+            <fieldset class="input-group-container">
+              <legend class="input-group-name">Profile Settings</legend>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="profile-name-setting">Profile Name</label>
+
+                  <input
+                    type="text"
+                    name="profile-name-setting"
+                    id="profile-name-setting"
+                    placeholder="Enter profile name"
+                  />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="overlay-controls">
+          <button class="cancel-button button" onclick="closeProfileSettings()">
+            Cancel
+          </button>
+          <button class="submit-button button" id="profile-name-submit">
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="overlay-wrapper"
+      id="security-settings-overlay"
+      style="display: none"
+    >
+      <div class="overlay container-shadow">
+        <h2 class="overlay-name">Account</h2>
+
+        <div class="overlay-details">
+          <form class="overlay-form">
+            <fieldset class="input-group-container">
+              <legend class="input-group-name">Security Settings</legend>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="email-setting">Email</label>
+
+                  <input
+                    type="text"
+                    name="email-setting"
+                    id="email-setting"
+                    placeholder="Enter email"
+                  />
+                </div>
+
+                <div class="input-pair">
+                  <label for="password-setting">Password</label>
+
+                  <input
+                    type="text"
+                    name="password-setting"
+                    id="password-setting"
+                    placeholder="Enter password"
+                  />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="overlay-controls">
+          <button
+            class="cancel-button button"
+            onclick="closeSecuritySettings()"
+          >
+            Cancel
+          </button>
+          <button class="submit-button button" onclick="openConfirmOverlay()">
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay-wrapper" id="confirm-overlay" style="display: none">
+      <div class="overlay container-shadow">
+        <h2 class="overlay-name">Update Security Details?</h2>
+
+        <div class="overlay-details">
+          <p class="confirm-message">
+            Are you sure you want to
+            <span class="highlight">update</span> account security details?
+          </p>
+        </div>
+
+        <div class="overlay-controls">
+          <button class="cancel-button button" onclick="closeConfirmOverlay()">
+            No
+          </button>
+          <button class="submit-button button" id="security-confirm-button">
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/src/js/tablesorting.js"></script>
+    <script src="/src/js/tablecheck.js"></script>
+    <script src="/src/js/toggletab.js"></script>
+    <script src="/src/js/overlay.js"></script>
+    <script src="/src/js/toggleform.js"></script>
+    <script src="/src/js/settings.js"></script>
+    <script src="/src/js/search.js"></script>
+  </body>
+</html>

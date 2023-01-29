@@ -105,3 +105,93 @@ function closeSecuritySettings() {
     x.style.display = "flex";
   }
 }
+
+// newwwwwww
+
+function openRemoveUserOverlay() {
+  var x = document.querySelector("#remove-user-overlay");
+  if (x.style.display !== "none") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+  }
+}
+
+function closeRemoveUserOverlay() {
+  var x = document.querySelector("#remove-user-overlay");
+  if (x.style.display !== "none") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+  }
+}
+
+function openConfirmPasswordOverlay() {
+  var x = document.querySelector("#confirm-password-overlay");
+  if (x.style.display !== "none") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+  }
+}
+
+function openUserInfo() {
+  var x = document.querySelector("#userInfo");
+  var y = document.querySelector("#users");
+  if (x.style.display !== "none") {
+    x.style.display = "none";
+    y.style.display = "block";
+  } else {
+    x.style.display = "block";
+    y.style.display = "none";
+  }
+}
+
+function closeUserInfo() {
+  var x = document.querySelector("#userInfo");
+  var y = document.querySelector("#users");
+  if (x.style.display !== "none") {
+    x.style.display = "none";
+    y.style.display = "block";
+  } else {
+    x.style.display = "block";
+    y.style.display = "none";
+  }
+}
+
+
+function openContactSettings() {
+  var x = document.querySelector("#contacts-settings-overlay");
+  if (x.style.display !== "none") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+  }
+}
+
+function closeContactSettings() {
+  var x = document.querySelector("#contacts-settings-overlay");
+  if (x.style.display !== "none") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+  }
+}
+
+function openAddUserOverlay() {
+  var x = document.querySelector("#addUser-settings-overlay");
+  if (x.style.display !== "none") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+  }
+}
+
+function closeAddUserOverlay() {
+  var x = document.querySelector("#addUser-settings-overlay");
+  if (x.style.display !== "none") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+  }
+}

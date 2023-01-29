@@ -70,7 +70,7 @@
             </a>
 
             <a href="spreadsheet.html" class="link-item">
-              <li class="link ">
+              <li class="link">
                 <p class="link-name">Blocks</p>
                 <i class="bx bxs-customize"></i>
               </li>
@@ -86,7 +86,7 @@
             <a href="management.html" class="link-item">
               <li class="link">
                 <p class="link-name">Management</p>
-                <i class='bx bxs-check-square'></i>
+                <i class="bx bxs-check-square"></i>
               </li>
             </a>
 
@@ -144,6 +144,14 @@
               Account
             </button>
 
+            <button class="tab-links" onclick="openLink(event, 'activities')">
+              Activities
+            </button>
+
+            <button class="tab-links" onclick="openLink(event, 'users')">
+              Users
+            </button>
+
             <button class="tab-links" onclick="openLink(event, 'aboutUs')">
               About Us
             </button>
@@ -154,6 +162,8 @@
               <div class="tab-menu-links container-shadow">
                 <a onclick="openLink(event, 'general')">General</a>
                 <a onclick="openLink(event, 'account')">Account</a>
+                <a onclick="openLink(event, 'activities')">Activities</a>
+                <a onclick="openLink(event, 'users')">Users</a>
                 <a onclick="openLink(event, 'aboutUs')">About Us</a>
               </div>
             </button>
@@ -175,22 +185,11 @@
                     </h2>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <div class="setting-group-container">
-              <h2 class="setting-group-label">
-                Profile Settings
-                <i class="bx bxs-edit-alt" onclick="openProfileSettings()"></i>
-              </h2>
-
-              <div class="setting-group">
                 <div class="setting">
                   <div class="setting-info">
-                    <p class="setting-label">Profile Name</p>
-                    <h2 class="setting-set" id="settings-profile-name">
-                      Binan City Cemetery
-                    </h2>
+                    <p class="setting-label">Cemetery Logo</p>
+                    <img src="./src/img/binanlogo.jpg" alt="bpc logo" />
                   </div>
                 </div>
               </div>
@@ -200,7 +199,115 @@
           <div class="tab-content" id="account">
             <div class="setting-group-container">
               <h2 class="setting-group-label">
-                Security Settings
+                Profile Settings
+                <i class="bx bxs-edit-alt" onclick="openProfileSettings()"></i>
+              </h2>
+
+              <div class="setting-group">
+                <!-- <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Profile Picture</p>
+                    <img
+                      src="./src/img/OpenPeeps-AvatarandBackdrop.png"
+                      alt="user profile"
+                    />
+                  </div>
+                </div> -->
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Name</p>
+                    <h2 class="setting-set">
+                      <span id="userFirstName">Juan</span>
+                      <span class="userLastName">Tamad</span>
+                    </h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Birth Date</p>
+                    <h2 class="setting-set">
+                      <span class="userBirthDate">12/12/2012</span>
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Account Details
+                <!-- <i class="bx bxs-edit-alt" onclick="openProfileSettings()"></i> -->
+              </h2>
+
+              <div class="setting-group">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Status</p>
+                    <h2 class="setting-set">Active</h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Account Type</p>
+                    <h2 class="setting-set">Super Admin</h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Added By</p>
+                    <h2 class="setting-set">Super Admin</h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Date Added</p>
+                    <h2 class="setting-set">12/12/2020</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Contact Details
+                <i class="bx bxs-edit-alt" onclick="openContactSettings()"></i>
+              </h2>
+
+              <div class="setting-group">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Email</p>
+                    <h2 class="setting-set email">admin@email.com</h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Phone Number</p>
+                    <h2 class="setting-set">09123456789</h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Address</p>
+                    <h2 class="setting-set">
+                      Lot 45, Blk 9, IDK St. IDK Brgy. IDK City/Municipality IDK
+                      Province
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Security Details
                 <i class="bx bxs-edit-alt" onclick="openSecuritySettings()"></i>
               </h2>
 
@@ -208,36 +315,416 @@
                 <div class="setting">
                   <div class="setting-info">
                     <p class="setting-label">Email</p>
-                    <h2 class="setting-set" id="settings-email">Admin</h2>
+                    <h2 class="setting-set email" id="settings-email">
+                      admin@email.com
+                    </h2>
                   </div>
                 </div>
 
                 <div class="setting">
                   <div class="setting-info">
                     <p class="setting-label">Password</p>
-                    <h2 class="setting-set" id="settings-password">
-                      *************
-                    </h2>
+                    <h2 class="setting-set" id="settings-password">******</h2>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="setting-group-container setting-activities">
-              <h2 class="setting-group-label">Activities</h2>
+          <div class="tab-content settingsTab" id="activities">
+            <div class="settings-records-container">
+              <div class="button-group">
+                <input
+                  type="search"
+                  id="rec-table-search-box"
+                  placeholder="Search..."
+                  style="display: none"
+                />
 
-              <div class="setting-group" onclick="openRecentActivities()">
-                <div class="setting">
-                  <div class="setting-info">
-                    <p class="setting-label recent-info-button">
-                      View Recent Activities
-                    </p>
-                  </div>
+                <button
+                  class="search-button button"
+                  onclick="toggleRecSearchBox()"
+                >
+                  <i class="bx bx-search rec-search-icon"></i>
+                  <i class="bx bx-x rec-close-icon" style="display: none"></i>
+                </button>
 
-                  <i class="bx bx-chevron-right"></i>
+                <button class="download-button button">
+                  <i class="bx bxs-download"></i>
+                </button>
+
+                <button class="refresh-button button">
+                  <i class="bx bx-refresh"></i>
+                </button>
+              </div>
+
+              <div class="table-container settings-table-container">
+                <table class="records-table arc-table">
+                  <thead>
+                    <tr>
+                      <th class="arc-string-header-sort arc-id-sort">ID</th>
+                      <th class="arc-string-header-sort arc-name-sort">Name</th>
+                      <th class="arc-bdate-header-sort">Birth Date</th>
+                      <th class="arc-ddate-header-sort">Death Date</th>
+                      <th class="arc-string-header-sort arc-grave-type-sort">
+                        Grave Type
+                      </th>
+                      <th>Location</th>
+                      <th class="adate-header-sort">Date Modified</th>
+                    </tr>
+                  </thead>
+                  <tbody id="rec-records-table">
+                    <tr>
+                      <td class="arc-string-body-sort">1234567890</td>
+                      <td class="arc-string-body-sort">Juan Tamad</td>
+                      <td class="arc-bdate-body-sort">11/01/1995</td>
+                      <td class="arc-ddate-body-sort">11/02/2020</td>
+                      <td class="arc-string-body-sort">
+                        <div class="chip orange-chip">Apartment</div>
+                      </td>
+                      <td>Block A, B2</td>
+                      <td class="adate-body-sort">11/19/2010</td>
+                    </tr>
+
+                    <tr>
+                      <td class="arc-string-body-sort">2234567890</td>
+                      <td class="arc-string-body-sort">Mary Paingas</td>
+                      <td class="arc-bdate-body-sort">11/01/1998</td>
+                      <td class="arc-ddate-body-sort">11/02/2017</td>
+                      <td class="arc-string-body-sort">
+                        <div class="chip green-chip">Lawn</div>
+                      </td>
+                      <td>Block A, B2</td>
+                      <td class="adate-body-sort">11/19/2011</td>
+                    </tr>
+
+                    <tr>
+                      <td class="arc-string-body-sort">1234567891</td>
+                      <td class="arc-string-body-sort">Elton John Navarro</td>
+                      <td class="arc-bdate-body-sort">11/25/1995</td>
+                      <td class="arc-ddate-body-sort">11/12/2020</td>
+                      <td class="arc-string-body-sort">
+                        <div class="chip red-chip">Bone Vault</div>
+                      </td>
+                      <td>Block A, B2</td>
+                      <td class="adate-body-sort">11/19/2012</td>
+                    </tr>
+
+                    <tr>
+                      <td class="arc-string-body-sort">1234567890</td>
+                      <td class="arc-string-body-sort">Judea Nicole Guillen</td>
+                      <td class="arc-bdate-body-sort">06/06/1995</td>
+                      <td class="arc-ddate-body-sort">05/02/2020</td>
+                      <td class="arc-string-body-sort">
+                        <div class="chip orange-chip">Apartment</div>
+                      </td>
+                      <td>Block A, B2</td>
+                      <td class="adate-body-sort">11/19/2013</td>
+                    </tr>
+
+                    <tr>
+                      <td class="arc-string-body-sort">1234567890</td>
+                      <td class="arc-string-body-sort">John Russel Derpo</td>
+                      <td class="arc-bdate-body-sort">03/01/1995</td>
+                      <td class="arc-ddate-body-sort">07/02/2020</td>
+                      <td class="arc-string-body-sort">
+                        <div class="chip orange-chip">Apartment</div>
+                      </td>
+                      <td>Block A, B2</td>
+                      <td class="adate-body-sort">11/19/2014</td>
+                    </tr>
+
+                    <tr>
+                      <td class="arc-string-body-sort">1234567890</td>
+                      <td class="arc-string-body-sort">Erika Tecson</td>
+                      <td class="arc-bdate-body-sort">11/01/1990</td>
+                      <td class="arc-ddate-body-sort">11/02/2012</td>
+                      <td class="arc-string-body-sort">
+                        <div class="chip green-chip">Lawn</div>
+                      </td>
+                      <td>Block A, B2</td>
+                      <td class="adate-body-sort">11/19/2015</td>
+                    </tr>
+
+                    <tr>
+                      <td class="arc-string-body-sort">1234567890</td>
+                      <td class="arc-string-body-sort">Rajap Benavidez</td>
+                      <td class="arc-bdate-body-sort">11/01/1990</td>
+                      <td class="arc-ddate-body-sort">11/01/1993</td>
+                      <td class="arc-string-body-sort">
+                        <div class="chip orange-chip">Apartment</div>
+                      </td>
+                      <td>Block A, B2</td>
+                      <td class="adate-body-sort">11/19/2016</td>
+                    </tr>
+
+                    <tr>
+                      <td class="arc-string-body-sort">1234567890</td>
+                      <td class="arc-string-body-sort">Clarence Paingas</td>
+                      <td class="arc-bdate-body-sort">11/03/1995</td>
+                      <td class="arc-ddate-body-sort">11/04/2020</td>
+                      <td class="arc-string-body-sort">
+                        <div class="chip red-chip">Bone Vault</div>
+                      </td>
+                      <td>Block A, B2</td>
+                      <td class="adate-body-sort">11/19/2017</td>
+                    </tr>
+
+                    <tr>
+                      <td class="arc-string-body-sort">1234567890</td>
+                      <td class="arc-string-body-sort">Dolores Paingas</td>
+                      <td class="arc-bdate-body-sort">09/01/1995</td>
+                      <td class="arc-ddate-body-sort">08/02/2020</td>
+                      <td class="arc-string-body-sort">
+                        <div class="chip red-chip">Bone Vault</div>
+                      </td>
+                      <td>Block A, B2</td>
+                      <td class="adate-body-sort">11/19/2018</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="users">
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Users
+                <i class="bx bx-plus" onclick="openAddUserOverlay()"></i>
+              </h2>
+
+              <div class="setting-group">
+                <div class="table-container settings-table-container">
+                  <table class="records-table arc-table users-table">
+                    <thead>
+                      <tr>
+                        <th class="arc-string-header-sort arc-name-sort">
+                          Name
+                        </th>
+                        <th class="adate-header-sort">Date Added</th>
+                        <th class="adate-header-sort">Last Active</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="rec-records-table">
+                      <tr>
+                        <td class="arc-string-body-sort name-cell">
+                          <!-- <img
+                            src="./src/img/OpenPeeps-AvatarandBackdrop.png"
+                            alt="user profile"
+                          /> -->
+                          Juan Tamad
+                        </td>
+                        <td class="adate-body-sort">11/19/2010</td>
+                        <td class="adate-body-sort">11/19/2010</td>
+                        <td class="roles">
+                          <!-- <div class="role-options">
+                            <select>
+                              <option value="admin">Admin</option>
+                              <option value="superAdmin">Super Admin</option>
+                            </select>
+                          </div> -->
+                          Admin
+                        </td>
+
+                        <td class="action-buttons">
+                          <button
+                            class="show-button button"
+                            onclick="openUserInfo()"
+                          >
+                            <i class="bx bx-show"></i>
+                          </button>
+
+                          <button
+                            class="remove-button button"
+                            onclick="openRemoveUserOverlay()"
+                          >
+                            <i class="bx bxs-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort name-cell">
+                          <!-- <img
+                            src="./src/img/OpenPeeps-AvatarandBackdrop.png"
+                            alt="user profile"
+                          /> -->
+                          Juan Lazy
+                        </td>
+                        <td class="adate-body-sort">11/19/2011</td>
+                        <td class="adate-body-sort">11/19/2012</td>
+                        <td class="roles">
+                          <!-- <div class="role-options">
+                            <select>
+                              <option value="admin">Admin</option>
+                              <option value="superAdmin">Super Admin</option>
+                            </select>
+                          </div> -->
+
+                          Admin
+                        </td>
+                        <td class="action-buttons">
+                          <button
+                            class="show-button button"
+                            onclick="openUserInfo()"
+                          >
+                            <i class="bx bx-show"></i>
+                          </button>
+
+                          <button
+                            class="remove-button button"
+                            onclick="openRemoveUserOverlay()"
+                          >
+                            <i class="bx bxs-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort name-cell">
+                          <!-- <img
+                            src="./src/img/OpenPeeps-AvatarandBackdrop.png"
+                            alt="user profile"
+                          /> -->
+                          Jullian Tamad
+                        </td>
+                        <td class="adate-body-sort">11/19/2000</td>
+                        <td class="adate-body-sort">11/19/2020</td>
+                        <td class="roles">
+                          <!-- <div class="role-options">
+                            <select>
+                              <option value="admin">Admin</option>
+                              <option value="superAdmin">Super Admin</option>
+                            </select>
+                          </div> -->
+                          Super Admin
+                        </td>
+                        <td class="action-buttons">
+                          <button
+                            class="show-button button"
+                            onclick="openUserInfo()"
+                          >
+                            <i class="bx bx-show"></i>
+                          </button>
+
+                          <button
+                            class="remove-button button"
+                            onclick="openRemoveUserOverlay()"
+                          >
+                            <i class="bx bxs-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
+
+            <!-- <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Removed Users
+                <i class="bx bx-plus"></i>
+              </h2>
+
+              <div class="setting-group">
+                <div class="table-container settings-table-container">
+                  <table class="records-table arc-table users-table">
+                    <thead>
+                      <tr>
+                        <th class="arc-string-header-sort arc-name-sort">
+                          Name
+                        </th>
+                        <th class="adate-header-sort">Date Removed</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="rec-records-table">
+                      <tr>
+                        <td class="arc-string-body-sort name-cell">
+                          <img
+                            src="./src/img/OpenPeeps-AvatarandBackdrop.png"
+                            alt="user profile"
+                          />
+                          Juan Tamad
+                        </td>
+                        <td class="adate-body-sort">11/19/2010</td>
+                        <td class="action-buttons">
+                          <button
+                            class="show-button button"
+                            onclick="openUserInfo()"
+                          >
+                            <i class="bx bx-show"></i>
+                          </button>
+
+                          <button
+                            class="remove-button button"
+                            onclick="openRemoveUserOverlay()"
+                          >
+                            <i class="bx bxs-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort name-cell">
+                          <img
+                            src="./src/img/OpenPeeps-AvatarandBackdrop.png"
+                            alt="user profile"
+                          />
+                          Juan Lazy
+                        </td>
+                        <td class="adate-body-sort">11/19/2011</td>
+                        <td class="action-buttons">
+                          <button
+                            class="show-button button"
+                            onclick="openUserInfo()"
+                          >
+                            <i class="bx bx-show"></i>
+                          </button>
+
+                          <button
+                            class="remove-button button"
+                            onclick="openRemoveUserOverlay()"
+                          >
+                            <i class="bx bxs-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort name-cell">
+                          <img
+                            src="./src/img/OpenPeeps-AvatarandBackdrop.png"
+                            alt="user profile"
+                          />
+                          Jullian Tamad
+                        </td>
+                        <td class="adate-body-sort">11/19/2000</td>
+                        <td class="action-buttons">
+                          <button
+                            class="show-button button"
+                            onclick="openUserInfo()"
+                          >
+                            <i class="bx bx-show"></i>
+                          </button>
+
+                          <button
+                            class="remove-button button"
+                            onclick="openRemoveUserOverlay()"
+                          >
+                            <i class="bx bxs-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div> -->
           </div>
 
           <div class="tab-content" id="aboutUs">
@@ -287,172 +774,285 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <div
-          class="settings-main-container container-shadow"
-          id="recents"
-          style="display: none"
-        >
-          <div class="return-button">
-            <span
-              class="return-button-wrapper"
-              onclick="closeRecentActivities()"
-              ><i class="bx bx-chevron-left"></i> Back</span
-            >
-          </div>
-
-          <div class="settings-records-container">
-            <div class="button-group">
-              <input
-                type="search"
-                id="rec-table-search-box"
-                placeholder="Search..."
-                style="display: none"
-              />
-
-              <button
-                class="search-button button"
-                onclick="toggleRecSearchBox()"
+          <div class="tab-content userInfo" id="userInfo" style="display: none">
+            <div class="return-button">
+              <span class="return-button-wrapper" onclick="closeUserInfo()"
+                ><i class="bx bx-chevron-left"></i> Back</span
               >
-                <i class="bx bx-search rec-search-icon"></i>
-                <i class="bx bx-x rec-close-icon" style="display: none"></i>
-              </button>
-
-              <button class="download-button button">
-                <i class="bx bxs-download"></i>
-              </button>
-
-              <button class="refresh-button button">
-                <i class="bx bx-refresh"></i>
-              </button>
             </div>
 
-            <div class="table-container settings-table-container">
-              <table class="records-table arc-table">
-                <thead>
-                  <tr>
-                    <th class="string-header-sort id-sort">ID</th>
-                    <th class="string-header-sort name-sort">Name</th>
-                    <th class="bdate-header-sort">Birth Date</th>
-                    <th class="ddate-header-sort">Death Date</th>
-                    <th class="string-header-sort grave-type-sort">
-                      Grave Type
-                    </th>
-                    <th>Location</th>
-                    <th class="mdate-header-sort">Date Modified</th>
-                  </tr>
-                </thead>
-                <tbody id="rec-records-table">
-                  <tr>
-                    <td class="string-body-sort">1234567890</td>
-                    <td class="string-body-sort">Juan Tamad</td>
-                    <td class="bdate-body-sort">11/01/1995</td>
-                    <td class="ddate-body-sort">11/02/2020</td>
-                    <td class="string-body-sort">
-                      <div class="chip orange-chip">Apartment</div>
-                    </td>
-                    <td>Block A, B2</td>
-                    <td class="mdate-body-sort">11/19/2010</td>
-                  </tr>
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Profile Settings
+                <!-- <i class="bx bxs-edit-alt" onclick="openProfileSettings()"></i> -->
+              </h2>
 
-                  <tr>
-                    <td class="string-body-sort">2234567890</td>
-                    <td class="string-body-sort">Mary Paingas</td>
-                    <td class="bdate-body-sort">11/01/1998</td>
-                    <td class="ddate-body-sort">11/02/2017</td>
-                    <td class="string-body-sort">
-                      <div class="chip green-chip">Lawn</div>
-                    </td>
-                    <td>Block A, B2</td>
-                    <td class="mdate-body-sort">11/19/2011</td>
-                  </tr>
+              <div class="setting-group">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Profile Picture</p>
+                    <img
+                      src="./src/img/OpenPeeps-AvatarandBackdrop.png"
+                      alt="user profile"
+                    />
+                  </div>
+                </div>
 
-                  <tr>
-                    <td class="string-body-sort">1234567891</td>
-                    <td class="string-body-sort">Elton John Navarro</td>
-                    <td class="bdate-body-sort">11/25/1995</td>
-                    <td class="ddate-body-sort">11/12/2020</td>
-                    <td class="string-body-sort">
-                      <div class="chip red-chip">Bone Vault</div>
-                    </td>
-                    <td>Block A, B2</td>
-                    <td class="mdate-body-sort">11/19/2012</td>
-                  </tr>
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Name</p>
+                    <h2 class="setting-set">
+                      <span id="userFirstName">Juan</span>
+                      <span class="userLastName">Tamad</span>
+                    </h2>
+                  </div>
+                </div>
 
-                  <tr>
-                    <td class="string-body-sort">1234567890</td>
-                    <td class="string-body-sort">Judea Nicole Guillen</td>
-                    <td class="bdate-body-sort">06/06/1995</td>
-                    <td class="ddate-body-sort">05/02/2020</td>
-                    <td class="string-body-sort">
-                      <div class="chip orange-chip">Apartment</div>
-                    </td>
-                    <td>Block A, B2</td>
-                    <td class="mdate-body-sort">11/19/2013</td>
-                  </tr>
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Birth Date</p>
+                    <h2 class="setting-set">
+                      <span class="userBirthDate">12/12/2012</span>
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                  <tr>
-                    <td class="string-body-sort">1234567890</td>
-                    <td class="string-body-sort">John Russel Derpo</td>
-                    <td class="bdate-body-sort">03/01/1995</td>
-                    <td class="ddate-body-sort">07/02/2020</td>
-                    <td class="string-body-sort">
-                      <div class="chip orange-chip">Apartment</div>
-                    </td>
-                    <td>Block A, B2</td>
-                    <td class="mdate-body-sort">11/19/2014</td>
-                  </tr>
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Account Details
+                <!-- <i class="bx bxs-edit-alt" onclick="openProfileSettings()"></i> -->
+              </h2>
 
-                  <tr>
-                    <td class="string-body-sort">1234567890</td>
-                    <td class="string-body-sort">Erika Tecson</td>
-                    <td class="bdate-body-sort">11/01/1990</td>
-                    <td class="ddate-body-sort">11/02/2012</td>
-                    <td class="string-body-sort">
-                      <div class="chip green-chip">Lawn</div>
-                    </td>
-                    <td>Block A, B2</td>
-                    <td class="mdate-body-sort">11/19/2015</td>
-                  </tr>
+              <div class="setting-group">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Status</p>
+                    <h2 class="setting-set">Active</h2>
+                  </div>
+                </div>
 
-                  <tr>
-                    <td class="string-body-sort">1234567890</td>
-                    <td class="string-body-sort">Rajap Benavidez</td>
-                    <td class="bdate-body-sort">11/01/1990</td>
-                    <td class="ddate-body-sort">11/02/2000</td>
-                    <td class="string-body-sort">
-                      <div class="chip orange-chip">Apartment</div>
-                    </td>
-                    <td>Block A, B2</td>
-                    <td class="mdate-body-sort">11/19/2016</td>
-                  </tr>
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Account Type</p>
+                    <h2 class="setting-set">Super Admin</h2>
+                  </div>
+                </div>
 
-                  <tr>
-                    <td class="string-body-sort">1234567890</td>
-                    <td class="string-body-sort">Clarence Paingas</td>
-                    <td class="bdate-body-sort">11/03/1995</td>
-                    <td class="ddate-body-sort">11/04/2020</td>
-                    <td class="string-body-sort">
-                      <div class="chip red-chip">Bone Vault</div>
-                    </td>
-                    <td>Block A, B2</td>
-                    <td class="mdate-body-sort">11/19/2017</td>
-                  </tr>
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Added By</p>
+                    <h2 class="setting-set">Super Admin</h2>
+                  </div>
+                </div>
 
-                  <tr>
-                    <td class="string-body-sort">1234567890</td>
-                    <td class="string-body-sort">Dolores Paingas</td>
-                    <td class="bdate-body-sort">09/01/1995</td>
-                    <td class="ddate-body-sort">08/02/2020</td>
-                    <td class="string-body-sort">
-                      <div class="chip red-chip">Bone Vault</div>
-                    </td>
-                    <td>Block A, B2</td>
-                    <td class="mdate-body-sort">11/19/2018</td>
-                  </tr>
-                </tbody>
-              </table>
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Date Added</p>
+                    <h2 class="setting-set">12/12/2020</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Contact Details
+                <!-- <i class="bx bxs-edit-alt" onclick="openProfileSettings()"></i> -->
+              </h2>
+
+              <div class="setting-group">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Email</p>
+                    <h2 class="setting-set email">admin@email.com</h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Phone Number</p>
+                    <h2 class="setting-set">09123456789</h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Address</p>
+                    <h2 class="setting-set">
+                      Lot 45, Blk 9, IDK St. IDK Brgy. IDK City/Municipality IDK
+                      Province
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-group-container">
+              <h2 class="setting-group-label">
+                Security Details
+                <!-- <i class="bx bxs-edit-alt" onclick="openSecuritySettings()"></i> -->
+              </h2>
+
+              <div class="setting-group">
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Email</p>
+                    <h2 class="setting-set email" id="settings-email">
+                      admin@email.com
+                    </h2>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="setting-info">
+                    <p class="setting-label">Password</p>
+                    <h2 class="setting-set" id="settings-password">******</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-group-container userActivities">
+              <h2 class="setting-group-label">
+                Activities
+                <!-- <i class="bx bxs-edit-alt" onclick="openSecuritySettings()"></i> -->
+              </h2>
+
+              <div class="settings-records-container">
+                <div class="table-container user-settings-table-container">
+                  <table class="records-table arc-table">
+                    <thead>
+                      <tr>
+                        <th class="arc-string-header-sort arc-id-sort">ID</th>
+                        <th class="arc-string-header-sort arc-name-sort">
+                          Name
+                        </th>
+                        <th class="arc-bdate-header-sort">Birth Date</th>
+                        <th class="arc-ddate-header-sort">Death Date</th>
+                        <th class="arc-string-header-sort arc-grave-type-sort">
+                          Grave Type
+                        </th>
+                        <th>Location</th>
+                        <th class="adate-header-sort">Date Modified</th>
+                      </tr>
+                    </thead>
+                    <tbody id="rec-records-table">
+                      <tr>
+                        <td class="arc-string-body-sort">1234567890</td>
+                        <td class="arc-string-body-sort">Juan Tamad</td>
+                        <td class="arc-bdate-body-sort">11/01/1995</td>
+                        <td class="arc-ddate-body-sort">11/02/2020</td>
+                        <td class="arc-string-body-sort">
+                          <div class="chip orange-chip">Apartment</div>
+                        </td>
+                        <td>Block A, B2</td>
+                        <td class="adate-body-sort">11/19/2010</td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort">2234567890</td>
+                        <td class="arc-string-body-sort">Mary Paingas</td>
+                        <td class="arc-bdate-body-sort">11/01/1998</td>
+                        <td class="arc-ddate-body-sort">11/02/2017</td>
+                        <td class="arc-string-body-sort">
+                          <div class="chip green-chip">Lawn</div>
+                        </td>
+                        <td>Block A, B2</td>
+                        <td class="adate-body-sort">11/19/2011</td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort">1234567891</td>
+                        <td class="arc-string-body-sort">Elton John Navarro</td>
+                        <td class="arc-bdate-body-sort">11/25/1995</td>
+                        <td class="arc-ddate-body-sort">11/12/2020</td>
+                        <td class="arc-string-body-sort">
+                          <div class="chip red-chip">Bone Vault</div>
+                        </td>
+                        <td>Block A, B2</td>
+                        <td class="adate-body-sort">11/19/2012</td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort">1234567890</td>
+                        <td class="arc-string-body-sort">
+                          Judea Nicole Guillen
+                        </td>
+                        <td class="arc-bdate-body-sort">06/06/1995</td>
+                        <td class="arc-ddate-body-sort">05/02/2020</td>
+                        <td class="arc-string-body-sort">
+                          <div class="chip orange-chip">Apartment</div>
+                        </td>
+                        <td>Block A, B2</td>
+                        <td class="adate-body-sort">11/19/2013</td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort">1234567890</td>
+                        <td class="arc-string-body-sort">John Russel Derpo</td>
+                        <td class="arc-bdate-body-sort">03/01/1995</td>
+                        <td class="arc-ddate-body-sort">07/02/2020</td>
+                        <td class="arc-string-body-sort">
+                          <div class="chip orange-chip">Apartment</div>
+                        </td>
+                        <td>Block A, B2</td>
+                        <td class="adate-body-sort">11/19/2014</td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort">1234567890</td>
+                        <td class="arc-string-body-sort">Erika Tecson</td>
+                        <td class="arc-bdate-body-sort">11/01/1990</td>
+                        <td class="arc-ddate-body-sort">11/02/2012</td>
+                        <td class="arc-string-body-sort">
+                          <div class="chip green-chip">Lawn</div>
+                        </td>
+                        <td>Block A, B2</td>
+                        <td class="adate-body-sort">11/19/2015</td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort">1234567890</td>
+                        <td class="arc-string-body-sort">Rajap Benavidez</td>
+                        <td class="arc-bdate-body-sort">11/01/1990</td>
+                        <td class="arc-ddate-body-sort">11/01/1993</td>
+                        <td class="arc-string-body-sort">
+                          <div class="chip orange-chip">Apartment</div>
+                        </td>
+                        <td>Block A, B2</td>
+                        <td class="adate-body-sort">11/19/2016</td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort">1234567890</td>
+                        <td class="arc-string-body-sort">Clarence Paingas</td>
+                        <td class="arc-bdate-body-sort">11/03/1995</td>
+                        <td class="arc-ddate-body-sort">11/04/2020</td>
+                        <td class="arc-string-body-sort">
+                          <div class="chip red-chip">Bone Vault</div>
+                        </td>
+                        <td>Block A, B2</td>
+                        <td class="adate-body-sort">11/19/2017</td>
+                      </tr>
+
+                      <tr>
+                        <td class="arc-string-body-sort">1234567890</td>
+                        <td class="arc-string-body-sort">Dolores Paingas</td>
+                        <td class="arc-bdate-body-sort">09/01/1995</td>
+                        <td class="arc-ddate-body-sort">08/02/2020</td>
+                        <td class="arc-string-body-sort">
+                          <div class="chip red-chip">Bone Vault</div>
+                        </td>
+                        <td>Block A, B2</td>
+                        <td class="adate-body-sort">11/19/2018</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -724,6 +1324,18 @@
                   />
                 </div>
               </div>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="cemetery-logo-setting">Cemetery Logo</label>
+
+                  <input
+                    type="file"
+                    name="cemetery-logo-setting"
+                    id="cemetery-logo-setting"
+                  />
+                </div>
+              </div>
             </fieldset>
           </form>
         </div>
@@ -745,13 +1357,24 @@
       style="display: none"
     >
       <div class="overlay container-shadow">
-        <h2 class="overlay-name">General</h2>
+        <h2 class="overlay-name">Account</h2>
 
         <div class="overlay-details">
           <form class="overlay-form">
             <fieldset class="input-group-container">
               <legend class="input-group-name">Profile Settings</legend>
 
+              <!-- <div class="input-group">
+                <div class="input-pair">
+                  <label for="profile-picture-setting">Profile Picture</label>
+
+                  <input
+                    type="file"
+                    name="profile-picture-setting"
+                    id="profile-picture-setting"
+                  />
+                </div>
+              </div> -->
               <div class="input-group">
                 <div class="input-pair">
                   <label for="profile-name-setting">Profile Name</label>
@@ -761,6 +1384,18 @@
                     name="profile-name-setting"
                     id="profile-name-setting"
                     placeholder="Enter profile name"
+                  />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="profile-bdate-setting">Birth Date</label>
+
+                  <input
+                    type="date"
+                    name="profile-bdate-setting"
+                    id="profile-bdate-setting"
                   />
                 </div>
               </div>
@@ -781,6 +1416,68 @@
 
     <div
       class="overlay-wrapper"
+      id="contacts-settings-overlay"
+      style="display: none"
+    >
+      <div class="overlay container-shadow">
+        <h2 class="overlay-name">Account</h2>
+
+        <div class="overlay-details">
+          <form class="overlay-form">
+            <fieldset class="input-group-container">
+              <legend class="input-group-name">Contact Details</legend>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="contact-email-setting">Email</label>
+
+                  <input
+                    type="email"
+                    name="contact-email-setting"
+                    id="contact-email-setting"
+                    placeholder="Enter email"
+                  />
+                </div>
+
+                <div class="input-pair">
+                  <label for="contact-number-setting">Contact Number</label>
+
+                  <input
+                    type="number"
+                    name="contact-number-setting"
+                    id="contact-number-setting"
+                    placeholder="Enter password"
+                  />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="contact-address-setting">Address</label>
+
+                  <input
+                    type="text"
+                    name="contact-address-setting"
+                    id="contact-address-setting"
+                    placeholder="Enter address"
+                  />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="overlay-controls">
+          <button class="cancel-button button" onclick="closeContactSettings()">
+            Cancel
+          </button>
+          <button class="submit-button button">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="overlay-wrapper"
       id="security-settings-overlay"
       style="display: none"
     >
@@ -790,7 +1487,7 @@
         <div class="overlay-details">
           <form class="overlay-form">
             <fieldset class="input-group-container">
-              <legend class="input-group-name">Security Settings</legend>
+              <legend class="input-group-name">Security Details</legend>
 
               <div class="input-group">
                 <div class="input-pair">
@@ -808,7 +1505,7 @@
                   <label for="password-setting">Password</label>
 
                   <input
-                    type="text"
+                    type="password"
                     name="password-setting"
                     id="password-setting"
                     placeholder="Enter password"
@@ -845,12 +1542,183 @@
         </div>
 
         <div class="overlay-controls">
-          <button class="cancel-button button" onclick="closeConfirmOverlay()">
+          <button
+            class="cancel-button button"
+            onclick="closeConfirmOverlay(), closeSecuritySettings()"
+          >
             No
           </button>
-          <button class="submit-button button" id="security-confirm-button">
+          <button
+            class="submit-button button"
+            onclick="openConfirmPasswordOverlay()"
+          >
             Yes
           </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay-wrapper" id="remove-user-overlay" style="display: none">
+      <div class="overlay container-shadow">
+        <h2 class="overlay-name">Remove user?</h2>
+
+        <div class="overlay-details">
+          <p class="remove-user-message">
+            You are about to <strong>remove</strong> a user which will not allow
+            this person to login into Elysium anymore.
+          </p>
+        </div>
+
+        <div class="overlay-controls">
+          <button
+            class="cancel-button button"
+            onclick="closeRemoveUserOverlay()"
+          >
+            No
+          </button>
+          <button
+            class="submit-button button"
+            onclick="openConfirmPasswordOverlay()"
+          >
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="overlay-wrapper"
+      id="confirm-password-overlay"
+      style="display: none"
+    >
+      <div class="overlay container-shadow">
+        <h2 class="overlay-name">Confirm Password</h2>
+
+        <div class="overlay-details">
+          <p class="overlay-text">
+            For you security, please confirm your passwod to continue.
+          </p>
+
+          <form class="confirm-password-form">
+            <fieldset class="input-group-container">
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="confirm-pass"
+                    >Password <span class="required">[Required]</span></label
+                  >
+
+                  <input
+                    type="password"
+                    name="confirm-pass"
+                    id="confirm-pass"
+                    placeholder="Enter password"
+                    required
+                  />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="overlay-controls">
+          <button
+            class="cancel-button button"
+            onclick="closeConfirmPasswordOverlay()"
+          >
+            Cancel
+          </button>
+          <button class="submit-button button">Confirm Password</button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="overlay-wrapper"
+      id="addUser-settings-overlay"
+      style="display: none"
+    >
+      <div class="overlay container-shadow">
+        <h2 class="overlay-name">Add User</h2>
+
+        <div class="overlay-details">
+          <form class="overlay-form">
+            <fieldset class="input-group-container">
+              <legend class="input-group-name">User Information</legend>
+
+              <div class="input-group">
+                <div class="input-pair">
+                  <label for="addUser-email-setting">Email</label>
+
+                  <input
+                    type="text"
+                    name="addUser-email-setting"
+                    id="addUser-email-setting"
+                    placeholder="Enter email"
+                  />
+                </div>
+
+                <div class="input-pair">
+                  <label for="addUser-password-setting">Password</label>
+
+                  <input
+                    type="password"
+                    name="addUser-password-setting"
+                    id="addUser-password-setting"
+                    placeholder="Enter password"
+                  />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="input-group-container">
+              <legend class="input-group-name">User Role</legend>
+
+              <div class="input-group">
+                <div class="input-pair radio">
+                  <input
+                    type="radio"
+                    name="addUser-role-setting"
+                    id="addUser-admin-setting"
+                    value="admin"
+                  />
+
+                  <label for="addUser-admin-setting">Admin</label>
+                </div>
+                <p class="option-description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
+                  ad aperiam dolores assumenda numquam, molestias dolore nemo
+                  quia modi, neque culpa. Expedita quae ex, praesentium alias
+                  odit id maiores aliquam.
+                </p>
+              </div>
+
+              <div class="input-group">
+                <div class="input-pair radio">
+                  <input
+                    type="radio"
+                    name="addUser-role-setting"
+                    id="addUser-superAdmin-setting"
+                    value="superAdmin"
+                  />
+
+                  <label for="addUser-superAdmin-setting">Super Admin</label>
+                </div>
+                <p class="option-description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
+                  ad aperiam dolores assumenda numquam, molestias dolore nemo
+                  quia modi, neque culpa. Expedita quae ex, praesentium alias
+                  odit id maiores aliquam.
+                </p>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="overlay-controls">
+          <button class="cancel-button button" onclick="closeAddUserOverlay()">
+            Cancel
+          </button>
+          <button class="submit-button button">Add user</button>
         </div>
       </div>
     </div>
